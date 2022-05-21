@@ -22,5 +22,6 @@ Route::prefix('user')->group(function (){
     Route::get('delete/{id}',[\App\Http\Controllers\UserController::class,'delete'])->name('user.delete');
 });
 
+
 Auth::routes();
 
