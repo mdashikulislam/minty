@@ -47,7 +47,7 @@
                                     </span>
                                     <span>
                                         <span class="account-user-name">{{\Illuminate\Support\Facades\Auth::user()->name}}</span>
-                                        <span class="account-position">{{\Illuminate\Support\Facades\Auth::user()->type}}</span>
+                                        <span class="account-position">{{getRoleName(\Illuminate\Support\Facades\Auth::user())}}</span>
                                     </span>
                         </a>
                         <div

@@ -17,10 +17,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Created</th>
-                                @if(\Illuminate\Support\Facades\Auth::user()->type =='Admin')
-                                    <th>Action</th>
-                                @endif
-
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -29,14 +26,12 @@
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>{{\Carbon\Carbon::parse($user->created)->format('d-m-Y')}}</td>
-                                    @if(\Illuminate\Support\Facades\Auth::user()->type =='Admin')
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <a href="{{route('user.edit',['id'=>$user->id])}}" class="btn btn-success btn-sm edit" ><i class="fa fa-edit"></i></a>
                                             <a href="{{route('user.delete',['id'=>$user->id])}}" class="btn btn-danger btn-sm delete" ><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
-                                    @endif
                                 </tr>
                                 @empty
                                     <tr>
@@ -57,7 +52,7 @@
 @push('script')
     <script>
         $(document).ready(function (){
-            
+
             $(document).on('click','.delete',function (e){
                 e.preventDefault();
                 Swal.fire({
