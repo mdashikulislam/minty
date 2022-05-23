@@ -31,6 +31,12 @@
                     </a>
                 </li>
                 <li class="side-nav-item menuitem-active">
+                    <a href="{{route('shop.item.index')}}" class="side-nav-link active">
+                        <i class="uil-calender"></i>
+                        <span>Shop Items</span>
+                    </a>
+                </li>
+                <li class="side-nav-item menuitem-active">
                     <a href="{{route('item.index')}}" class="side-nav-link active">
                         <i class="uil-calender"></i>
                         <span>Master Items</span>

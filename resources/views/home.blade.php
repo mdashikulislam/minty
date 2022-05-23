@@ -10,8 +10,8 @@
                     <div class="page-title-box">
                         <h4 class="header-title">Stuff List</h4>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table table-centered mb-0">
+                    <div>
+                        <table id="basic-datatable" class="table dt-responsive table-bordered nowrap w-100">
                             <thead>
                             <tr>
                                 <th>Name</th>
@@ -46,8 +46,16 @@
         </div>
     </div>
 @endsection
-
+@push('css')
+    <link href="{{asset('assets/css/vendor/dataTables.bootstrap5.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/vendor/responsive.bootstrap5.css')}}" rel="stylesheet" type="text/css" />
+@endpush
 @push('script')
+    <script src="{{asset('assets/js/jquery-3.6.0.js')}}"></script>
+    <script src="{{asset('assets/js/vendor/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets/js/vendor/dataTables.bootstrap5.js')}}"></script>
+    <script src="{{asset('assets/js/vendor/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('assets/js/vendor/responsive.bootstrap5.min.js')}}"></script>
     <script>
         $(document).ready(function (){
 
@@ -66,6 +74,9 @@
                         window.location.href = $(this).attr('href');
                     }
                 });
+            });
+            $('#basic-datatable').dataTable({
+                "ordering": false
             });
         })
     </script>

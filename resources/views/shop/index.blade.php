@@ -13,8 +13,8 @@
                             <a href="{{route('shop.create')}}" class="btn btn-danger text-right mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Shop</a>
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table table-centered table-condensed table-bordered mb-0">
+                    <div>
+                        <table id="basic-datatable" class="table table-bordered dt-responsive nowrap w-100">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -95,10 +95,19 @@
         </div>
     </div>
 @endsection
+@push('css')
+    <link href="{{asset('assets/css/vendor/dataTables.bootstrap5.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/vendor/responsive.bootstrap5.css')}}" rel="stylesheet" type="text/css" />
+@endpush
 @push('script')
+    <script src="{{asset('assets/js/jquery-3.6.0.js')}}"></script>
+    <script src="{{asset('assets/js/vendor/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets/js/vendor/dataTables.bootstrap5.js')}}"></script>
+    <script src="{{asset('assets/js/vendor/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('assets/js/vendor/responsive.bootstrap5.min.js')}}"></script>
+
     <script>
         $(document).ready(function (){
-
             $(document).on('click','.delete',function (e){
                 e.preventDefault();
                 Swal.fire({
@@ -114,6 +123,9 @@
                         window.location.href = $(this).attr('href');
                     }
                 });
+            });
+            $('#basic-datatable').dataTable({
+                "ordering": false
             });
         })
     </script>
