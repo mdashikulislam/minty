@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::middleware('auth:web')->group(function (){
     Route::middleware('role:'.ADMIN)->group(function (){
@@ -20,6 +20,7 @@ Route::middleware('auth:web')->group(function (){
         Route::get('change-password',[\App\Http\Controllers\HomeController::class,'changePassword'])->name('change.password');
         Route::post('change-password',[\App\Http\Controllers\HomeController::class,'updatePassword']);
         Route::prefix('user')->group(function (){
+            Route::get('/', [\App\Http\Controllers\UserController::class,'index'])->name('user.index');
             Route::get('edit/{id}',[\App\Http\Controllers\UserController::class,'edit'])->name('user.edit');
             Route::put('update/{id}',[\App\Http\Controllers\UserController::class,'update'])->name('user.update');
             Route::get('delete/{id}',[\App\Http\Controllers\UserController::class,'delete'])->name('user.delete');
@@ -55,6 +56,14 @@ Route::middleware('auth:web')->group(function (){
             Route::get('edit/{id}',[\App\Http\Controllers\CupBoardController::class,'edit'])->name('cupboard.edit');
             Route::put('update/{id}',[\App\Http\Controllers\CupBoardController::class,'update'])->name('cupboard.update');
             Route::get('delete/{id}',[\App\Http\Controllers\CupBoardController::class,'delete'])->name('cupboard.delete');
+        });
+        Route::prefix('cupboard-history')->group(function (){
+            Route::get('/',[\App\Http\Controllers\CupBoardHistoryController::class,'index'])->name('cupboard.history.index');
+            Route::get('create',[\App\Http\Controllers\CupBoardHistoryController::class,'create'])->name('cupboard.history.create');
+            Route::post('store',[\App\Http\Controllers\CupBoardHistoryController::class,'store'])->name('cupboard.history.store');
+            Route::get('edit/{id}',[\App\Http\Controllers\CupBoardHistoryController::class,'edit'])->name('cupboard.history.edit');
+            Route::put('update/{id}',[\App\Http\Controllers\CupBoardHistoryController::class,'update'])->name('cupboard.history.update');
+            Route::get('delete/{id}',[\App\Http\Controllers\CupBoardHistoryController::class,'delete'])->name('cupboard.history.delete');
         });
     });
 });

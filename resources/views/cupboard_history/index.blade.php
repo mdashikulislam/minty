@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header-text')
-    Cupboards
+    Cupboard History
 @endsection
 @section('content')
     <div class="row">
@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-sm-5">
-                            <a href="{{route('cupboard.create')}}" class="btn btn-danger text-right mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Cupboard</a>
+                            <a href="{{route('cupboard.history.create')}}" class="btn btn-danger text-right mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Cupboard History</a>
                         </div>
                     </div>
                     <div>
@@ -19,36 +19,36 @@
                             <tr>
                                 <th>#</th>
                                 <th>User Name</th>
-                                <th>Master Item Name</th>
-                                <th>Purchase Total</th>
-                                <th>In Use</th>
+                                <th>Cupboard Id</th>
+                                <th>Shop</th>
+                                <th>Which Way</th>
                                 <th>Created</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse($cupboards as $key=> $cupboard)
+                            @forelse($histories as $key=> $history)
                                 <tr>
                                     <td>{{$loop->index +1 }}</td>
                                     <td>
-                                        {{$cupboard->users->name}}
+                                        {{$history->users->name}}
                                     </td>
                                     <td>
-                                        {{$cupboard->masterItems->name}}
+                                        {{$history->cupboard_id}}
                                     </td>
                                     <td>
-                                        {{$cupboard->purchase_total}}
+                                        {{$history->shops->name}}
                                     </td>
                                     <td>
-                                        {{$cupboard->in_use_count}}
+                                        {{ucfirst($history->which_way)}}
                                     </td>
                                     <td>
-                                        {{\Carbon\Carbon::parse($cupboard->created_at)->isoFormat('Do, MMMM YYYY')}}
+                                        {{\Carbon\Carbon::parse($history->created_at)->isoFormat('Do, MMMM YYYY')}}
                                     </td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{route('cupboard.edit',['id'=>$cupboard->id])}}" class="btn btn-success btn-sm edit" ><i class="fa fa-edit"></i></a>
-                                            <a href="{{route('cupboard.delete',['id'=>$cupboard->id])}}" class="btn btn-danger btn-sm delete" ><i class="fa fa-trash"></i></a>
+                                            <a href="{{route('cupboard.history.edit',['id'=>$history->id])}}" class="btn btn-success btn-sm edit" ><i class="fa fa-edit"></i></a>
+                                            <a href="{{route('cupboard.history.delete',['id'=>$history->id])}}" class="btn btn-danger btn-sm delete" ><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>

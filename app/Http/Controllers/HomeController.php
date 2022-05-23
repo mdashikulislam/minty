@@ -12,14 +12,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        $users = User::whereHas('roles',function ($q){
-            $q->where('name',APP_USER);
-        })->orderByDesc('created_at')->get();
 
-        return view('home')
-            ->with([
-                'users'=>$users
-            ]);
+        return view('home');
     }
 
     public function changePassword()

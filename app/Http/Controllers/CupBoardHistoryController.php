@@ -1,0 +1,99 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Cupboard;
+use App\Models\CupboardHistory;
+use App\Models\Shop;
+use App\Models\User;
+use Illuminate\Http\Request;
+
+class CupBoardHistoryController extends Controller
+{
+    public function index()
+    {
+        $histories = CupboardHistory::with(['users','shops'])->orderByDesc('created_at')->get();
+        return view('cupboard_history.index')
+            ->with([
+                'histories'=>$histories
+            ]);
+    }
+    public function create()
+    {
+        return view('cupboard_history.create')
+            ->with([
+                'users'=>User::all(),
+                'cupboards'=>Cupboard::all(),
+                'shops'=>Shop::all()
+            ]);
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request,[
+           'user_id'=>['required'],
+           'cupboard_id'=>['required'],
+           'shop_id'=>['required'],
+           'which_way'=>['required']
+        ]);
+        $history = new CupboardHistory();
+        $this->extracted($history,$request);
+        $history->save();
+        toast('Cupboard history create successfully','success');
+        return redirect()->route('cupboard.history.index');
+    }
+
+    public function edit($id)
+    {
+        $history = CupboardHistory::where('id',$id)->first();
+        if (empty($history)){
+            toast('Cupboard History not found','error');
+            return redirect()->back();
+        }
+        return  view('cupboard_history.edit')
+            ->with([
+                'history'=>$history,
+                'users'=>User::all(),
+                'cupboards'=>Cupboard::all(),
+                'shops'=>Shop::all()
+            ]);
+    }
+
+    public function update($id,Request $request)
+    {
+        $this->validate($request,[
+            'user_id'=>['required'],
+            'cupboard_id'=>['required'],
+            'shop_id'=>['required'],
+            'which_way'=>['required']
+        ]);
+        $history = CupboardHistory::where('id',$id)->first();
+        if (empty($history)){
+            toast('Cupboard History not found','error');
+            return redirect()->back();
+        }
+        $this->extracted($history,$request);
+        $history->save();
+        toast('Cupboard history update successfully','success');
+        return redirect()->route('cupboard.history.index');
+    }
+
+    public function delete($id)
+    {
+        $history = CupboardHistory::where('id',$id)->first();
+        if (empty($history)){
+            toast('Cupboard history not found','error');
+            return redirect()->route('cupboard.history.index');
+        }
+        $history->delete();
+        toast('Cupboard history delete successfully','success');
+        return redirect()->route('cupboard.history.index');
+    }
+    private function extracted(CupboardHistory $history, Request $request){
+        $history->user_id = $request->user_id;
+        $history->cupboard_id = $request->cupboard_id;
+        $history->shop_id = $request->shop_id;
+        $history->which_way = $request->which_way;
+    }
+
+}

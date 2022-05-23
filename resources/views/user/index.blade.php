@@ -1,54 +1,35 @@
 @extends('layouts.app')
-
 @section('header-text')
-    Cupboards
+    users
 @endsection
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="row mb-2">
-                        <div class="col-sm-5">
-                            <a href="{{route('cupboard.create')}}" class="btn btn-danger text-right mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Cupboard</a>
-                        </div>
+                    <div class="page-title-box">
+                        <h4 class="header-title">Stuff List</h4>
                     </div>
                     <div>
-                        <table id="basic-datatable" class="table table-bordered dt-responsive nowrap w-100">
+                        <table id="basic-datatable" class="table dt-responsive table-bordered nowrap w-100">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>User Name</th>
-                                <th>Master Item Name</th>
-                                <th>Purchase Total</th>
-                                <th>In Use</th>
+                                <th>Name</th>
+                                <th>Email</th>
                                 <th>Created</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse($cupboards as $key=> $cupboard)
+                            @forelse($users as $user)
                                 <tr>
-                                    <td>{{$loop->index +1 }}</td>
-                                    <td>
-                                        {{$cupboard->users->name}}
-                                    </td>
-                                    <td>
-                                        {{$cupboard->masterItems->name}}
-                                    </td>
-                                    <td>
-                                        {{$cupboard->purchase_total}}
-                                    </td>
-                                    <td>
-                                        {{$cupboard->in_use_count}}
-                                    </td>
-                                    <td>
-                                        {{\Carbon\Carbon::parse($cupboard->created_at)->isoFormat('Do, MMMM YYYY')}}
-                                    </td>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{\Carbon\Carbon::parse($user->created)->format('d-m-Y')}}</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{route('cupboard.edit',['id'=>$cupboard->id])}}" class="btn btn-success btn-sm edit" ><i class="fa fa-edit"></i></a>
-                                            <a href="{{route('cupboard.delete',['id'=>$cupboard->id])}}" class="btn btn-danger btn-sm delete" ><i class="fa fa-trash"></i></a>
+                                            <a href="{{route('user.edit',['id'=>$user->id])}}" class="btn btn-success btn-sm edit" ><i class="fa fa-edit"></i></a>
+                                            <a href="{{route('user.delete',['id'=>$user->id])}}" class="btn btn-danger btn-sm delete" ><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>

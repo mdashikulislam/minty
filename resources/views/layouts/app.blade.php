@@ -24,32 +24,44 @@
         </a>
         <div class="h-100" id="leftside-menu-container" data-simplebar>
             <ul class="side-nav">
-                <li class="side-nav-item menuitem-active">
-                    <a href="{{route('shop.index')}}" class="side-nav-link active">
+                <li class="side-nav-item ">
+                    <a href="{{route('dashboard')}}" class="side-nav-link ">
+                        <i class="uil-calender"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="side-nav-item ">
+                    <a href="{{route('shop.index')}}" class="side-nav-link ">
                         <i class="uil-calender"></i>
                         <span>Shops</span>
                     </a>
                 </li>
-                <li class="side-nav-item menuitem-active">
-                    <a href="{{route('shop.item.index')}}" class="side-nav-link active">
+                <li class="side-nav-item ">
+                    <a href="{{route('shop.item.index')}}" class="side-nav-link ">
                         <i class="uil-calender"></i>
                         <span>Shop Items</span>
                     </a>
                 </li>
-                <li class="side-nav-item menuitem-active">
-                    <a href="{{route('item.index')}}" class="side-nav-link active">
+                <li class="side-nav-item ">
+                    <a href="{{route('item.index')}}" class="side-nav-link ">
                         <i class="uil-calender"></i>
                         <span>Master Items</span>
                     </a>
                 </li>
-                <li class="side-nav-item menuitem-active">
-                    <a href="{{route('cupboard.index')}}" class="side-nav-link active">
+                <li class="side-nav-item ">
+                    <a href="{{route('cupboard.index')}}" class="side-nav-link ">
                         <i class="uil-calender"></i>
                         <span>Cupboards</span>
                     </a>
                 </li>
-                <li class="side-nav-item menuitem-active">
-                    <a href="{{route('dashboard')}}" class="side-nav-link active">
+                <li class="side-nav-item ">
+                    <a href="{{route('cupboard.history.index')}}" class="side-nav-link ">
+                        <i class="uil-calender"></i>
+                        <span>Cupboard History</span>
+                    </a>
+                </li>
+                <li class="side-nav-item ">
+                    <a href="{{route('user.index')}}" class="side-nav-link">
                         <i class="uil-calender"></i>
                         <span>Users</span>
                     </a>

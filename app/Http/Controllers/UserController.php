@@ -8,6 +8,17 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        $users = User::whereHas('roles',function ($q){
+            $q->where('name',APP_USER);
+        })->orderByDesc('created_at')->get();
+
+        return view('user.index')
+            ->with([
+                'users'=>$users
+            ]);
+    }
     public function edit($id)
     {
         $user = User::where('id',$id)->first();

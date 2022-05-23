@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class CupboardHistory extends Model
 {
     use HasFactory;
+
+    public function users()
+    {
+        return $this->hasOne(User::class,'id','user_id');
+    }
+    public function shops()
+    {
+        return $this->hasOne(Shop::class,'id','shop_id');
+    }
 }
