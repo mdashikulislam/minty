@@ -49,14 +49,10 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr>
-                                    <td class="text-center" colspan="6">No record found</td>
-                                </tr>
                             @endforelse
                             </tbody>
                         </table>
                     </div>
-                    {{$items->links()}}
                 </div>
             </div>
         </div>

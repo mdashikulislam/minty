@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header-text')
-    Shops
+    Shop Items
 @endsection
 @section('content')
     <div class="row">
@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-sm-5">
-                            <a href="{{route('shop.create')}}" class="btn btn-danger text-right mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Shop</a>
+                            <a href="{{route('cupboard.create')}}" class="btn btn-danger text-right mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Cupboard</a>
                         </div>
                     </div>
                     <div>
@@ -18,71 +18,41 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Name</th>
-                                <th>Address</th>
-                                <th>Post Code</th>
-                                <th>Contact Name</th>
-                                <th>Contact Number</th>
-                                <th>Contact Email</th>
-                                <th>QR Code Out</th>
-                                <th>QR Code In</th>
-                                <th>Shop Only</th>
-                                <th>Lat</th>
-                                <th>Lang</th>
+                                <th>User Name</th>
+                                <th>Master Item Name</th>
+                                <th>Purchase Total</th>
+                                <th>In Use</th>
                                 <th>Created</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse($shops as $key=> $shop)
+                            @forelse($cupboards as $key=> $cupboard)
                                 <tr>
                                     <td>{{$loop->index +1 }}</td>
                                     <td>
-                                        {{$shop->name}}
+                                        {{$cupboard->users->name}}
                                     </td>
                                     <td>
-                                        {{$shop->address}}
+                                        {{$cupboard->masterItems->name}}
                                     </td>
                                     <td>
-                                        {{$shop->postcode}}
+                                        {{$cupboard->purchase_total}}
                                     </td>
                                     <td>
-                                        {{$shop->contact_name}}
+                                        {{$cupboard->in_use_count}}
                                     </td>
                                     <td>
-                                        {{$shop->contact_number}}
-                                    </td>
-                                    <td>
-                                        {{$shop->contact_email}}
-                                    </td>
-                                    <td>
-                                        {{$shop->qrcode_out}}
-                                    </td>
-                                    <td>
-                                        {{$shop->qrcode_in}}
-                                    </td>
-                                    <td>
-                                        {{$shop->shop_only ==1 ? 'Yes':'No'}}
-                                    </td>
-
-                                    <td>
-                                        {{$shop->lat}}
-                                    </td>
-                                    <td>
-                                        {{$shop->long}}
-                                    </td>
-                                    <td>
-                                        {{\Carbon\Carbon::parse($shop->created_at)->isoFormat('Do, MMMM YYYY')}}
+                                        {{\Carbon\Carbon::parse($cupboard->created_at)->isoFormat('Do, MMMM YYYY')}}
                                     </td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{route('shop.edit',['id'=>$shop->id])}}" class="btn btn-success btn-sm edit" ><i class="fa fa-edit"></i></a>
-                                            <a href="{{route('shop.delete',['id'=>$shop->id])}}" class="btn btn-danger btn-sm delete" ><i class="fa fa-trash"></i></a>
+                                            <a href="{{route('cupboard.edit',['id'=>$cupboard->id])}}" class="btn btn-success btn-sm edit" ><i class="fa fa-edit"></i></a>
+                                            <a href="{{route('cupboard.delete',['id'=>$cupboard->id])}}" class="btn btn-danger btn-sm delete" ><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
                             @empty
-
                             @endforelse
                             </tbody>
                         </table>
@@ -102,9 +72,9 @@
     <script src="{{asset('assets/js/vendor/dataTables.bootstrap5.js')}}"></script>
     <script src="{{asset('assets/js/vendor/dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('assets/js/vendor/responsive.bootstrap5.min.js')}}"></script>
-
     <script>
         $(document).ready(function (){
+
             $(document).on('click','.delete',function (e){
                 e.preventDefault();
                 Swal.fire({

@@ -43,6 +43,12 @@
                     </a>
                 </li>
                 <li class="side-nav-item menuitem-active">
+                    <a href="{{route('cupboard.index')}}" class="side-nav-link active">
+                        <i class="uil-calender"></i>
+                        <span>Cupboards</span>
+                    </a>
+                </li>
+                <li class="side-nav-item menuitem-active">
                     <a href="{{route('dashboard')}}" class="side-nav-link active">
                         <i class="uil-calender"></i>
                         <span>Users</span>

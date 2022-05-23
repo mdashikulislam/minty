@@ -48,6 +48,14 @@ Route::middleware('auth:web')->group(function (){
             Route::put('update/{id}',[\App\Http\Controllers\ShopItemController::class,'update'])->name('shop.item.update');
             Route::get('delete/{id}',[\App\Http\Controllers\ShopItemController::class,'delete'])->name('shop.item.delete');
         });
+        Route::prefix('cupboard')->group(function (){
+            Route::get('/',[\App\Http\Controllers\CupBoardController::class,'index'])->name('cupboard.index');
+            Route::get('create',[\App\Http\Controllers\CupBoardController::class,'create'])->name('cupboard.create');
+            Route::post('store',[\App\Http\Controllers\CupBoardController::class,'store'])->name('cupboard.store');
+            Route::get('edit/{id}',[\App\Http\Controllers\CupBoardController::class,'edit'])->name('cupboard.edit');
+            Route::put('update/{id}',[\App\Http\Controllers\CupBoardController::class,'update'])->name('cupboard.update');
+            Route::get('delete/{id}',[\App\Http\Controllers\CupBoardController::class,'delete'])->name('cupboard.delete');
+        });
     });
 });
 
