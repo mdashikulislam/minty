@@ -16,8 +16,8 @@ class CreateMasterItemsTable extends Migration
         Schema::create('master_items', function (Blueprint $table) {
             $table->id();
             $table->string('name',10)->nullable();
-            $table->binary('image',255)->nullable();
-            $table->decimal('price',3,2)->default(0.00);
+            $table->string('image',255)->nullable();
+            $table->decimal('price',10,2)->default(0.00);
             $table->timestamps();
         });
     }

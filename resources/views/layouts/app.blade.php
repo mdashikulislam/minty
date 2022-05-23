@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
     <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     @stack('css')
 </head>
 
@@ -23,6 +24,12 @@
         </a>
         <div class="h-100" id="leftside-menu-container" data-simplebar>
             <ul class="side-nav">
+                <li class="side-nav-item menuitem-active">
+                    <a href="{{route('item.index')}}" class="side-nav-link active">
+                        <i class="uil-calender"></i>
+                        <span>Master Items</span>
+                    </a>
+                </li>
                 <li class="side-nav-item menuitem-active">
                     <a href="{{route('dashboard')}}" class="side-nav-link active">
                         <i class="uil-calender"></i>
@@ -46,8 +53,10 @@
                                              class="rounded-circle">
                                     </span>
                                     <span>
-                                        <span class="account-user-name">{{\Illuminate\Support\Facades\Auth::user()->name}}</span>
-                                        <span class="account-position">{{getRoleName(\Illuminate\Support\Facades\Auth::user())}}</span>
+                                        <span
+                                            class="account-user-name">{{\Illuminate\Support\Facades\Auth::user()->name}}</span>
+                                        <span
+                                            class="account-position">{{getRoleName(\Illuminate\Support\Facades\Auth::user())}}</span>
                                     </span>
                         </a>
                         <div

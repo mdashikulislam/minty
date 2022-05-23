@@ -12,16 +12,30 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
-Route::get('/', [\App\Http\Controllers\HomeController::class,'index'])->name('dashboard');
-Route::get('change-password',[\App\Http\Controllers\HomeController::class,'changePassword'])->name('change.password');
-Route::post('change-password',[\App\Http\Controllers\HomeController::class,'updatePassword']);
-Route::prefix('user')->group(function (){
-    Route::get('edit/{id}',[\App\Http\Controllers\UserController::class,'edit'])->name('user.edit');
-    Route::put('update/{id}',[\App\Http\Controllers\UserController::class,'update'])->name('user.update');
-    Route::get('delete/{id}',[\App\Http\Controllers\UserController::class,'delete'])->name('user.delete');
+Route::middleware('auth:web')->group(function (){
+    Route::middleware('role:'.ADMIN)->group(function (){
+        Route::get('/', [\App\Http\Controllers\HomeController::class,'index'])->name('dashboard');
+        Route::get('change-password',[\App\Http\Controllers\HomeController::class,'changePassword'])->name('change.password');
+        Route::post('change-password',[\App\Http\Controllers\HomeController::class,'updatePassword']);
+        Route::prefix('user')->group(function (){
+            Route::get('edit/{id}',[\App\Http\Controllers\UserController::class,'edit'])->name('user.edit');
+            Route::put('update/{id}',[\App\Http\Controllers\UserController::class,'update'])->name('user.update');
+            Route::get('delete/{id}',[\App\Http\Controllers\UserController::class,'delete'])->name('user.delete');
+        });
+        Route::prefix('master-item')->group(function (){
+            Route::get('/',[\App\Http\Controllers\ItemController::class,'index'])->name('item.index');
+            Route::get('create',[\App\Http\Controllers\ItemController::class,'create'])->name('item.create');
+            Route::post('store',[\App\Http\Controllers\ItemController::class,'store'])->name('item.store');
+            Route::get('edit/{id}',[\App\Http\Controllers\ItemController::class,'edit'])->name('item.edit');
+            Route::put('update/{id}',[\App\Http\Controllers\ItemController::class,'update'])->name('item.update');
+            Route::get('delete/{id}',[\App\Http\Controllers\ItemController::class,'delete'])->name('item.delete');
+        });
+    });
 });
 
 
-Auth::routes();
+
+
 
