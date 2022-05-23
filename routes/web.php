@@ -32,6 +32,22 @@ Route::middleware('auth:web')->group(function (){
             Route::put('update/{id}',[\App\Http\Controllers\ItemController::class,'update'])->name('item.update');
             Route::get('delete/{id}',[\App\Http\Controllers\ItemController::class,'delete'])->name('item.delete');
         });
+        Route::prefix('shop')->group(function (){
+            Route::get('/',[\App\Http\Controllers\ShopController::class,'index'])->name('shop.index');
+            Route::get('create',[\App\Http\Controllers\ShopController::class,'create'])->name('shop.create');
+            Route::post('store',[\App\Http\Controllers\ShopController::class,'store'])->name('shop.store');
+            Route::get('edit/{id}',[\App\Http\Controllers\ShopController::class,'edit'])->name('shop.edit');
+            Route::put('update/{id}',[\App\Http\Controllers\ShopController::class,'update'])->name('shop.update');
+            Route::get('delete/{id}',[\App\Http\Controllers\ShopController::class,'delete'])->name('shop.delete');
+        });
+        Route::prefix('shop-item')->group(function (){
+            Route::get('/',[\App\Http\Controllers\ShopItemController::class,'index'])->name('shop.item.index');
+            Route::get('create',[\App\Http\Controllers\ShopItemController::class,'create'])->name('shop.item.create');
+            Route::post('store',[\App\Http\Controllers\ShopItemController::class,'store'])->name('shop.item.store');
+            Route::get('edit/{id}',[\App\Http\Controllers\ShopItemController::class,'edit'])->name('shop.item.edit');
+            Route::put('update/{id}',[\App\Http\Controllers\ShopItemController::class,'update'])->name('shop.item.update');
+            Route::get('delete/{id}',[\App\Http\Controllers\ShopItemController::class,'delete'])->name('shop.item.delete');
+        });
     });
 });
 

@@ -25,6 +25,12 @@
         <div class="h-100" id="leftside-menu-container" data-simplebar>
             <ul class="side-nav">
                 <li class="side-nav-item menuitem-active">
+                    <a href="{{route('shop.index')}}" class="side-nav-link active">
+                        <i class="uil-calender"></i>
+                        <span>Shops</span>
+                    </a>
+                </li>
+                <li class="side-nav-item menuitem-active">
                     <a href="{{route('item.index')}}" class="side-nav-link active">
                         <i class="uil-calender"></i>
                         <span>Master Items</span>

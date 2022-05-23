@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MasterItem;
+use App\Models\Shop;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller

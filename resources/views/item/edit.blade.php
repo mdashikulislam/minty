@@ -24,7 +24,7 @@ Edit master item
                         </div>
                         <div class="mb-3">
                             <label class="form-label" >Price</label>
-                            <input name="price" type="number" step="any" value="{{old('price') ? :$item->price}}" class="form-control @error('price') is-invalid @enderror"  placeholder="First name"  required>
+                            <input name="price" type="number" step="any" value="{{old('price') ? :$item->price}}" class="form-control @error('price') is-invalid @enderror"  placeholder="Price"  required>
                             @error('price')
                             <div class="invalid-feedback d-block">{{$message}}</div>
                             @enderror
@@ -41,7 +41,7 @@ Edit master item
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-success">Save</button>
+                            <button type="submit" class="btn btn-success">Update</button>
                         </div>
                     </form>
                 </div>

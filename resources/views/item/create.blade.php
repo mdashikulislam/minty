@@ -23,7 +23,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" >Price</label>
-                            <input name="price" type="number" step="any" value="{{old('price')}}" class="form-control @error('price') is-invalid @enderror"  placeholder="First name"  required>
+                            <input name="price" type="number" step="any" value="{{old('price')}}" class="form-control @error('price') is-invalid @enderror"  placeholder="Price"  required>
                             @error('price')
                             <div class="invalid-feedback d-block">{{$message}}</div>
                             @enderror
