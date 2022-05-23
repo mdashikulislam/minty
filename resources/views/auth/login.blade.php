@@ -58,11 +58,11 @@
                         </form>
                     </div>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-12 text-center">
-                        <p class="text-white">Don't have an account? <a href="{{route('register')}}" class="ms-1 text-warning"><b>Sign Up</b></a></p>
-                    </div>
-                </div>
+{{--                <div class="row mt-3">--}}
+{{--                    <div class="col-12 text-center">--}}
+{{--                        <p class="text-white">Don't have an account? <a href="{{route('register')}}" class="ms-1 text-warning"><b>Sign Up</b></a></p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>
