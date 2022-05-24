@@ -64,6 +64,11 @@
     <style>
         .table-icon{
             float: left;
+        }
+        .table-icon{
+            border: 2px solid #fff;
+            padding: 5px;
+            border-radius: 4px;
             width: 74px;
             height: 74px;
         }

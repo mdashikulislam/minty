@@ -18,7 +18,7 @@
 <div class="wrapper">
     <div class="leftside-menu">
         <a href="{{route('dashboard')}}" class="logo text-center logo-light">
-            <span>
+            <span style="padding-left: 2px!important;">
                 <img src="{{asset('assets/images/logo-170.png')}}">
             </span>
         </a>
@@ -26,25 +26,25 @@
             <ul class="side-nav">
                 <li class="side-nav-item ">
                     <a href="{{route('dashboard')}}" class="side-nav-link ">
-                        <i class="uil-calender"></i>
+                        <i class="uil-home-alt"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li class="side-nav-item ">
                     <a href="{{route('shop.index')}}" class="side-nav-link ">
-                        <i class="uil-calender"></i>
+                        <i class="uil-store"></i>
                         <span>Shops</span>
                     </a>
                 </li>
                 <li class="side-nav-item ">
                     <a href="{{route('item.index')}}" class="side-nav-link ">
-                        <i class="uil-calender"></i>
+                        <i class="uil-clipboard-alt"></i>
                         <span>Master Items</span>
                     </a>
                 </li>
                 <li class="side-nav-item ">
                     <a href="{{route('shop.item.index')}}" class="side-nav-link ">
-                        <i class="uil-calender"></i>
+                        <i class="uil-package"></i>
                         <span>Shop Items</span>
                     </a>
                 </li>
@@ -57,13 +57,13 @@
                 </li>
                 <li class="side-nav-item ">
                     <a href="{{route('cupboard.history.index')}}" class="side-nav-link ">
-                        <i class="uil-calender"></i>
+                        <i class="uil-meeting-board"></i>
                         <span>Cupboard History</span>
                     </a>
                 </li>
                 <li class="side-nav-item ">
                     <a href="{{route('user.index')}}" class="side-nav-link">
-                        <i class="uil-calender"></i>
+                        <i class="uil-user"></i>
                         <span>Users</span>
                     </a>
                 </li>

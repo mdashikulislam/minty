@@ -26,7 +26,7 @@ class ItemController extends Controller
         $this->validate($request,[
            'name'=>['required','max:10'],
             'price'=>['required','between:0.00,999.99'],
-            'image'=>['required','mimes:jpeg,jpg,png,gif']
+            'image'=>['required','mimes:png']
         ]);
         $item = new MasterItem();
         $item->name = $request->name;
@@ -65,7 +65,7 @@ class ItemController extends Controller
         $item->price = $request->price;
         if ($request->image){
             $this->validate($request,[
-                'image'=>['required','mimes:jpeg,jpg,png,gif']
+                'image'=>['required','mimes:png']
             ]);
             $item->image = uploadSingleFile($request->image,'item');
         }

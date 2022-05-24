@@ -31,11 +31,11 @@ Edit master item
                         </div>
                         <div class="mb-3">
                             <label class="form-label d-block" >Current Image</label>
-                            <img style="width: 50px;height: 50px" src="{{\Illuminate\Support\Facades\Storage::disk('local')->url($item->image)}}" alt="">
+                            <img style="width: 74px;height: 74px" src="{{\Illuminate\Support\Facades\Storage::disk('local')->url($item->image)}}" alt="">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" >Image</label>
-                            <input name="image" type="file" step="any" class="form-control @error('image') is-invalid @enderror"  placeholder="First name"  required>
+                            <input name="image" type="file" step="any" class="form-control @error('image') is-invalid @enderror"  placeholder="image" >
                             @error('image')
                             <div class="invalid-feedback d-block">{{$message}}</div>
                             @enderror
