@@ -64,15 +64,15 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col">
-                                <label class="form-label" >QR Code Out</label>
-                                <input name="qrcode_out" type="text" value="{{old('qrcode_out')}}" class="form-control @error('qrcode_out') is-invalid @enderror"  placeholder="QR Code Out"  required>
+                                <label class="form-label" >QR Code Out/Use</label>
+                                <input name="qrcode_out" type="text" value="{{old('qrcode_out')}}" class="form-control @error('qrcode_out') is-invalid @enderror"  placeholder="QR Code Out/Use"  required>
                                 @error('qrcode_out')
                                 <div class="invalid-feedback d-block">{{$message}}</div>
                                 @enderror
                             </div>
                             <div class="col">
-                                <label class="form-label" >QR Code In</label>
-                                <input name="qrcode_in" type="text" value="{{old('qrcode_in')}}" class="form-control @error('qrcode_in') is-invalid @enderror"  placeholder="QR Code In"  required>
+                                <label class="form-label" >QR Code In/Return</label>
+                                <input name="qrcode_in" type="text" value="{{old('qrcode_in')}}" class="form-control @error('qrcode_in') is-invalid @enderror"  placeholder="QR Code In/Return"  required>
                                 @error('qrcode_in')
                                 <div class="invalid-feedback d-block">{{$message}}</div>
                                 @enderror

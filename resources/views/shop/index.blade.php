@@ -24,8 +24,8 @@
                                 <th>Contact Name</th>
                                 <th>Contact Number</th>
                                 <th>Contact Email</th>
-                                <th>QR Code Out</th>
-                                <th>QR Code In</th>
+                                <th>QR Code Out/Use</th>
+                                <th>QR Code In/Return</th>
                                 <th>Shop Only</th>
                                 <th>Lat</th>
                                 <th>Lang</th>

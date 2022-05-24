@@ -30,7 +30,7 @@
                                 <tr>
                                     <td>{{$loop->index +1 }}</td>
                                     <td class="text-center">
-                                        <img style="max-width: 50px;max-height: 50px;" src="{{Storage::disk('local')->url($item->image)}}" alt="">
+                                        <img class="table-icon" src="{{Storage::disk('local')->url($item->image)}}" alt="">
                                     </td>
                                     <td>
                                         {{$item->name}}
@@ -61,6 +61,16 @@
 @push('css')
     <link href="{{asset('assets/css/vendor/dataTables.bootstrap5.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('assets/css/vendor/responsive.bootstrap5.css')}}" rel="stylesheet" type="text/css" />
+    <style>
+        .table-icon{
+            float: left;
+            width: 74px;
+            height: 74px;
+        }
+        table tbody tr td{
+            vertical-align: middle!important;
+        }
+    </style>
 @endpush
 @push('script')
     <script src="{{asset('assets/js/jquery-3.6.0.js')}}"></script>

@@ -37,17 +37,18 @@
                     </a>
                 </li>
                 <li class="side-nav-item ">
-                    <a href="{{route('shop.item.index')}}" class="side-nav-link ">
-                        <i class="uil-calender"></i>
-                        <span>Shop Items</span>
-                    </a>
-                </li>
-                <li class="side-nav-item ">
                     <a href="{{route('item.index')}}" class="side-nav-link ">
                         <i class="uil-calender"></i>
                         <span>Master Items</span>
                     </a>
                 </li>
+                <li class="side-nav-item ">
+                    <a href="{{route('shop.item.index')}}" class="side-nav-link ">
+                        <i class="uil-calender"></i>
+                        <span>Shop Items</span>
+                    </a>
+                </li>
+
                 <li class="side-nav-item ">
                     <a href="{{route('cupboard.index')}}" class="side-nav-link ">
                         <i class="uil-calender"></i>
