@@ -16,8 +16,8 @@
                         @csrf
                         <div class="row mb-3">
                             <div class="col">
-                                <label class="form-label" >Name</label>
-                                <input name="name" type="text" value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror"  placeholder="First name"  required>
+                                <label class="form-label" >Shop Name</label>
+                                <input name="name" type="text" value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror"  placeholder="Shop Name"  required>
                                 @error('name')
                                 <div class="invalid-feedback d-block">{{$message}}</div>
                                 @enderror

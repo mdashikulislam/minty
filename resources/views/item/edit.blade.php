@@ -17,7 +17,7 @@ Edit master item
                         @method('PUT')
                         <div class="mb-3">
                             <label class="form-label" >Name</label>
-                            <input name="name" type="text" value="{{old('name') ? :$item->name}}" class="form-control @error('name') is-invalid @enderror"  placeholder="First name"  required>
+                            <input name="name" type="text" value="{{old('name') ? :$item->name}}" class="form-control @error('name') is-invalid @enderror"  placeholder="Name"  required>
                             @error('name')
                             <div class="invalid-feedback d-block">{{$message}}</div>
                             @enderror

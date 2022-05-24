@@ -16,7 +16,7 @@
                         @csrf
                         <div class="mb-3">
                             <label class="form-label" >Name</label>
-                            <input name="name" type="text" value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror"  placeholder="First name"  required>
+                            <input name="name" type="text" value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror"  placeholder="Name"  required>
                             @error('name')
                                 <div class="invalid-feedback d-block">{{$message}}</div>
                             @enderror
@@ -30,7 +30,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" >Image</label>
-                            <input name="image" type="file" step="any" class="form-control @error('image') is-invalid @enderror"  placeholder="First name"  required>
+                            <input name="image" type="file" step="any" class="form-control @error('image') is-invalid @enderror"  placeholder="Image"  required>
                             @error('image')
                             <div class="invalid-feedback d-block">{{$message}}</div>
                             @enderror
