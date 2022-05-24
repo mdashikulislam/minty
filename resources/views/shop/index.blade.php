@@ -18,7 +18,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Name</th>
+                                <th>Shop Name</th>
                                 <th>Address</th>
                                 <th>Post Code</th>
                                 <th>Contact Name</th>
