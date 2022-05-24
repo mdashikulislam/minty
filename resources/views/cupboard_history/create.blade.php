@@ -31,7 +31,7 @@
                             <div class="col">
                                 <label class="form-label" >Select Cupboard</label>
                                 <select name="cupboard_id" id="" class="form-control @error('cupboard_id')  is-invalid @enderror">
-                                    <option value="">Select Master Item</option>
+                                    <option value="">Select Cupboard</option>
                                     @forelse($cupboards as $cupboard)
                                         <option value="{{$cupboard->id}}">{{$cupboard->id}}</option>
                                     @empty
