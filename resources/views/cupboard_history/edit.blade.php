@@ -17,6 +17,19 @@
                         @method('PUT')
                         <div class="row mb-3">
                             <div class="col">
+                                <label class="form-label" >Select Shop</label>
+                                <select name="shop_id" id="" class="form-control @error('shop_id')  is-invalid @enderror">
+                                    <option value="">Select Shop</option>
+                                    @forelse($shops as $shop)
+                                        <option {{$shop->id == $history->shop_id ? 'selected':''}} value="{{$shop->id}}">{{$shop->name}}</option>
+                                    @empty
+                                    @endforelse
+                                </select>
+                                @error('shop_id')
+                                <div class="invalid-feedback d-block">{{$message}}</div>
+                                @enderror
+                            </div>
+                            <div class="col">
                                 <label class="form-label" >Select User</label>
                                 <select name="user_id"  class="form-control @error('user_id')  is-invalid @enderror">
                                     <option value="">Select User</option>
@@ -29,32 +42,18 @@
                                 <div class="invalid-feedback d-block">{{$message}}</div>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="row mb-3">
                             <div class="col">
-                                <label class="form-label" >Select Master Item</label>
+                                <label class="form-label" >Select Item Name</label>
                                 <select name="cupboard_id" id="" class="form-control @error('cupboard_id')  is-invalid @enderror">
-                                    <option value="">Select Master Item</option>
+                                    <option value="">Select Item Name</option>
                                     @forelse($items as $item)
-                                        <option {{$item->id == $history->cupboard_id ? 'selected':''}} value="{{$item->id}}">{{$item->id}}</option>
+                                        <option {{$item->id == $history->cupboard_id ? 'selected':''}} value="{{$item->id}}">{{$item->name}}</option>
                                     @empty
                                     @endforelse
                                 </select>
                                 @error('cupboard_id')
-                                <div class="invalid-feedback d-block">{{$message}}</div>
-                                @enderror
-                            </div>
-
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col">
-                                <label class="form-label" >Select Shop</label>
-                                <select name="shop_id" id="" class="form-control @error('shop_id')  is-invalid @enderror">
-                                    <option value="">Select Shop</option>
-                                    @forelse($shops as $shop)
-                                        <option {{$shop->id == $history->shop_id ? 'selected':''}} value="{{$shop->id}}">{{$shop->name}}</option>
-                                    @empty
-                                    @endforelse
-                                </select>
-                                @error('shop_id')
                                 <div class="invalid-feedback d-block">{{$message}}</div>
                                 @enderror
                             </div>
