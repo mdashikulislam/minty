@@ -34,7 +34,7 @@
                         <div class="row mb-3">
                             <div class="col">
                                 <label class="form-label" >Post code</label>
-                                <input name="postcode" type="number" value="{{old('postcode') ? :$shop->postcode}}" class="form-control @error('postcode') is-invalid @enderror"  placeholder="Post code"  required>
+                                <input name="postcode" type="text" value="{{old('postcode') ? :$shop->postcode}}" class="form-control @error('postcode') is-invalid @enderror"  placeholder="Post code"  required>
                                 @error('postcode')
                                 <div class="invalid-feedback d-block">{{$message}}</div>
                                 @enderror

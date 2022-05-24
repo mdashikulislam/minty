@@ -36,7 +36,7 @@ class ShopController extends Controller
         $this->validate($request,[
             'name'=>['required','max:50'],
             'address'=>['required','max:255'],
-            'postcode'=>['required','max:10','alpha_num'],
+            'postcode'=>['required','max:10'],
             'contact_name'=>['required','max:50'],
             'contact_number'=>['required','max:50'],
             'contact_email'=>['required','email','max:50'],
@@ -57,7 +57,7 @@ class ShopController extends Controller
         $this->validate($request,[
             'name'=>['required','max:50'],
             'address'=>['required','max:255'],
-            'postcode'=>['required','max:10','alpha_num'],
+            'postcode'=>['required','max:10'],
             'contact_name'=>['required','max:50'],
             'contact_number'=>['required','max:50'],
             'contact_email'=>['required','email','max:50'],
