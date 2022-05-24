@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cupboard;
 use App\Models\CupboardHistory;
+use App\Models\MasterItem;
 use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class CupBoardHistoryController extends Controller
 {
     public function index()
     {
-        $histories = CupboardHistory::with(['users','shops'])->orderByDesc('created_at')->get();
+        $histories = CupboardHistory::with(['users','shops','items'])->orderByDesc('created_at')->get();
         return view('cupboard_history.index')
             ->with([
                 'histories'=>$histories
@@ -24,7 +25,8 @@ class CupBoardHistoryController extends Controller
             ->with([
                 'users'=>User::all(),
                 'cupboards'=>Cupboard::all(),
-                'shops'=>Shop::all()
+                'shops'=>Shop::all(),
+                'items'=>MasterItem::all()
             ]);
     }
 
@@ -55,7 +57,8 @@ class CupBoardHistoryController extends Controller
                 'history'=>$history,
                 'users'=>User::all(),
                 'cupboards'=>Cupboard::all(),
-                'shops'=>Shop::all()
+                'shops'=>Shop::all(),
+                'items'=>MasterItem::all()
             ]);
     }
 

@@ -34,7 +34,7 @@
                                         {{$history->users->name}}
                                     </td>
                                     <td>
-                                        {{$history->cupboard_id}}
+                                        {{$history->items->name}}
                                     </td>
                                     <td>
                                         {{$history->shops->name}}

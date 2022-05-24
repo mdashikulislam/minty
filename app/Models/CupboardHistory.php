@@ -17,4 +17,9 @@ class CupboardHistory extends Model
     {
         return $this->hasOne(Shop::class,'id','shop_id');
     }
+
+    public function items()
+    {
+        return $this->hasOne(MasterItem::class,'id','cupboard_id');
+    }
 }

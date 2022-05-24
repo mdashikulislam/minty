@@ -30,11 +30,11 @@
                                 @enderror
                             </div>
                             <div class="col">
-                                <label class="form-label" >Select Cupboard</label>
+                                <label class="form-label" >Select Master Item</label>
                                 <select name="cupboard_id" id="" class="form-control @error('cupboard_id')  is-invalid @enderror">
-                                    <option value="">Select Cupboard</option>
-                                    @forelse($cupboards as $cupboard)
-                                        <option {{$cupboard->id == $history->cupboard_id ? 'selected':''}} value="{{$cupboard->id}}">{{$cupboard->id}}</option>
+                                    <option value="">Select Master Item</option>
+                                    @forelse($items as $item)
+                                        <option {{$item->id == $history->cupboard_id ? 'selected':''}} value="{{$item->id}}">{{$item->id}}</option>
                                     @empty
                                     @endforelse
                                 </select>
