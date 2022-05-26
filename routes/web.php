@@ -67,7 +67,9 @@ Route::middleware('auth:web')->group(function (){
         });
     });
 });
-
+Route::get('storage',function (){
+   \Artisan::call('storage:link');
+});
 
 
 
