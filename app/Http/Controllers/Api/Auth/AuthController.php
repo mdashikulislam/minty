@@ -52,6 +52,7 @@ class AuthController extends Controller
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->save();
+            $user->sendEmailVerificationNotification();
             $token = $user->createToken('register')->plainTextToken;
             $user->assignRole(APP_USER);
             \DB::commit();
