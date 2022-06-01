@@ -22,6 +22,7 @@ class ApiController extends Controller
     {
         $item = MasterItem::where('id',$id)->first();
         if (!empty($item)){
+            $item->image = asset('storage/'.$item->image);
             return \response([
                 'status'=>true,
                 'data'=>$item
