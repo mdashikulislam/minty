@@ -26,6 +26,9 @@ Route::post('password-reset',[\App\Http\Controllers\Api\Auth\ResetPasswordContro
 
 Route::middleware('auth:sanctum')->group(function (){
     Route::post('logout',[\App\Http\Controllers\Api\Auth\AuthController::class,'logout']);
+    Route::get('user-info',[\App\Http\Controllers\Api\Auth\AuthController::class,'userInfo']);
+    Route::post('user-info-update',[\App\Http\Controllers\Api\Auth\AuthController::class,'userInfoUpdate']);
+    Route::post('update-password',[\App\Http\Controllers\Api\Auth\AuthController::class,'updatePassword']);
     Route::get('rent-items',[\App\Http\Controllers\Api\ApiController::class,'rentItem']);
     Route::get('rent-item/{id}',[\App\Http\Controllers\Api\ApiController::class,'rentItemSingle']);
 });

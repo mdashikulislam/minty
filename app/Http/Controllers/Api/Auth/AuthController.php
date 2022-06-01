@@ -7,12 +7,14 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
     use SendsPasswordResetEmails;
+
     public function login(LoginRequest $request)
     {
         if (!empty(\Auth::check())){
@@ -80,4 +82,41 @@ class AuthController extends Controller
         ],Response::HTTP_OK);
     }
 
+    public function userInfo()
+    {
+        return \response([
+            'status'=>true,
+            'data'=>User::where('id',\Auth::id())->first()
+        ],Response::HTTP_OK);
+    }
+
+    public function userInfoUpdate(Request $request)
+    {
+        $this->validate($request,[
+            'name'=>['required','max:255'],
+            'email'=>['required','max:32','email','unique:users,email,'.\Auth::id()]
+        ]);
+        $user = User::where('id',\Auth::id())->first();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+        return \response([
+            'status'=>true,
+            'data'=>$user
+        ],Response::HTTP_OK);
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $this->validate($request,[
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+        $user = User::where('id',\Auth::id())->first();
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return \response([
+            'status'=>true,
+            'message'=>'Password change successfully.'
+        ],Response::HTTP_OK);
+    }
 }
