@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes(['register' => false]);
-
+Auth::routes(['register' => false,'verify' => true]);
+//Route::get('email-verify/{id}/{hash}',[\App\Http\Controllers\HomeController::class,'verify'])->name('verification.verify');
 Route::middleware('auth:web')->group(function (){
     Route::middleware('role:'.ADMIN)->group(function (){
         Route::get('/', [\App\Http\Controllers\HomeController::class,'index'])->name('dashboard');

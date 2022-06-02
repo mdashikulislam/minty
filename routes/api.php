@@ -24,7 +24,7 @@ Route::post('forget-password',[\App\Http\Controllers\Api\Auth\AuthController::cl
 Route::post('password-reset',[\App\Http\Controllers\Api\Auth\ResetPasswordController::class,'reset']);
 
 
-Route::middleware('auth:sanctum')->group(function (){
+Route::middleware(['auth:sanctum','verified'])->group(function (){
     Route::post('logout',[\App\Http\Controllers\Api\Auth\AuthController::class,'logout']);
     Route::get('user-info',[\App\Http\Controllers\Api\Auth\AuthController::class,'userInfo']);
     Route::post('user-info-update',[\App\Http\Controllers\Api\Auth\AuthController::class,'userInfoUpdate']);
