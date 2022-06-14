@@ -71,9 +71,32 @@
 
 <footer class="footer footer-alt text-white"><script>document.write(new Date().getFullYear())</script> © {{getenv('CUSTOM_SITE_NAME')}}
 </footer>
-
 <script src="{{asset('assets/js/vendor.min.js')}}"></script>
 <script src="{{asset('assets/js/app.min.js')}}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    var old = '{{app('router')->getRoutes()->match(app('request')->create(URL::previous()))->getName() != 'login' ? true :false}}';
+    if (old == true){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        Toast.fire({
+            icon: 'success',
+            title: 'Password reset successful'
+        })
+        setInterval(function (){
+            window.location = 'http://www.shrewsburycup.co.uk';
+        },2000)
+    }
+</script>
 </body>
 </html>
-
+@include('sweetalert::alert')

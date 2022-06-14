@@ -56,6 +56,30 @@ class ApiController extends Controller
          ],Response::HTTP_OK);
     }
 
+    public function cupboardCreate(Request $request)
+    {
+        $this->validate($request,[
+            'master_item_id'=>['required','numeric','min:1'],
+            'purchase_total'=>['required','numeric','min:1'],
+            'in_use_count'=>['required','numeric','min:1'],
+        ]);
+        $cupboard = new Cupboard();
+        $cupboard->user_id = \Auth::id();
+        $cupboard->master_item_id = $request->master_item_id;
+        $cupboard->purchase_total = $request->purchase_total;
+        $cupboard->in_use_count = $request->in_use_count;
+        if ($cupboard->save()){
+            return \response([
+                'status'=>true,
+                'data'=>$cupboard
+            ],Response::HTTP_OK);
+        }else{
+            return \response([
+                'status'=>false,
+                'msg'=>'Data not insert'
+            ],Response::HTTP_OK);
+        }
+    }
     public function cupboardHistory()
     {
         $history = CupboardHistory::with('shops')
