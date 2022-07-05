@@ -37,23 +37,25 @@ class Handler extends ExceptionHandler
     }
    public function render($request, Throwable $e)
    {
-       if ($this->isHttpException($e)) {
-           switch ($e->getStatusCode()) {
-               // not authorized
-               case '403':
-                   return self::errorResponse($e->getMessage(), 403);
-                   break;
-               // not found
-               case '404':
-                   return  self::errorResponse($e->getMessage(), 404);
-                   break;
-               // internal error
-               case '500':
-                   return  self::errorResponse($e->getMessage(), 500);
-                   break;
-               default:
-                   return  self::errorResponse("Handler has returned an error", 502);
-                   break;
+       if ($request->wantsJson()){
+           if ($this->isHttpException($e)) {
+               switch ($e->getStatusCode()) {
+                   // not authorized
+                   case '403':
+                       return self::errorResponse($e->getMessage(), 403);
+                       break;
+                   // not found
+                   case '404':
+                       return  self::errorResponse($e->getMessage(), 404);
+                       break;
+                   // internal error
+                   case '500':
+                       return  self::errorResponse($e->getMessage(), 500);
+                       break;
+                   default:
+                       return  self::errorResponse("Handler has returned an error", 502);
+                       break;
+               }
            }
        }
        return parent::render($request, $e);

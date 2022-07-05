@@ -15,6 +15,9 @@ class ApiController extends Controller
     public function rentItem()
     {
         $items = MasterItem::orderByDesc('created_at')->get();
+        $items->each(function ($q){
+           $q->image = asset('storage/'.$q->image);
+        });
         return  response([
             'status'=>true,
             'data'=>$items

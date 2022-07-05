@@ -75,7 +75,7 @@
 <script src="{{asset('assets/js/app.min.js')}}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    var old = '{{app('router')->getRoutes()->match(app('request')->create(URL::previous()))->getName() != 'login' ? true :false}}';
+    var old = '{{app('router')->getRoutes()->match(app('request')->create(URL::previous()))->getName() == 'password.reset' ? true : false}}';
     if (old == true){
         const Toast = Swal.mixin({
             toast: true,

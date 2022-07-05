@@ -68,7 +68,22 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label" >Quantity</label>
+                                <input value="{{old('qnty') ? :$history->qnty}}" type="number" min="1" name="qnty" class="form-control">
+                                @error('qnty')
+                                <div class="invalid-feedback d-block">{{$message}}</div>
+                                @enderror
+                            </div>
+                            <div class="col">
+                                <label class="form-label" >Cost Each</label>
+                                <input value="{{old('cost_each') ? :$history->cost_each}}" type="number" min="1" step="any" name="cost_each" class="form-control">
+                                @error('cost_each')
+                                <div class="invalid-feedback d-block">{{$message}}</div>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-success">Update</button>
                         </div>

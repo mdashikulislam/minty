@@ -36,7 +36,9 @@ class CupBoardHistoryController extends Controller
            'user_id'=>['required'],
            'cupboard_id'=>['required'],
            'shop_id'=>['required'],
-           'which_way'=>['required']
+           'which_way'=>['required'],
+           'qnty'=>['required','min:1','numeric'],
+           'cost_each'=>['required','between:0.01,99999.99'],
         ]);
         $history = new CupboardHistory();
         $this->extracted($history,$request);
@@ -97,6 +99,9 @@ class CupBoardHistoryController extends Controller
         $history->cupboard_id = $request->cupboard_id;
         $history->shop_id = $request->shop_id;
         $history->which_way = $request->which_way;
+        $history->qnty = $request->qnty;
+        $history->cost_each = $request->cost_each;
+        $history->cost_total = $request->cost_each * $request->qnty;
     }
 
 }

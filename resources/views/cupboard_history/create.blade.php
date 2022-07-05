@@ -67,6 +67,22 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label" >Quantity</label>
+                                <input type="number" min="1" name="qnty" class="form-control">
+                                @error('qnty')
+                                <div class="invalid-feedback d-block">{{$message}}</div>
+                                @enderror
+                            </div>
+                            <div class="col">
+                                <label class="form-label" >Cost Each</label>
+                                <input type="number" min="1" step="any" name="cost_each" class="form-control">
+                                @error('cost_each')
+                                <div class="invalid-feedback d-block">{{$message}}</div>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-success">Save</button>
                         </div>

@@ -22,6 +22,9 @@
                                 <th>Cupboard Id</th>
                                 <th>Shop</th>
                                 <th>Which Way</th>
+                                <th>Quantity</th>
+                                <th>Cost Each</th>
+                                <th>Cost Total</th>
                                 <th>Created</th>
                                 <th>Action</th>
                             </tr>
@@ -31,7 +34,7 @@
                                 <tr>
                                     <td>{{$loop->index +1 }}</td>
                                     <td>
-                                        {{$history->users->name}}
+                                        {{@$history->users->name}}
                                     </td>
                                     <td>
                                         {{$history->items->name}}
@@ -41,6 +44,15 @@
                                     </td>
                                     <td>
                                         {{ucfirst($history->which_way)}}
+                                    </td>
+                                    <td>
+                                        {{$history->qnty}}
+                                    </td>
+                                    <td>
+                                        {{$history->cost_each}}
+                                    </td>
+                                    <td>
+                                        {{$history->cost_total}}
                                     </td>
                                     <td>
                                         {{\Carbon\Carbon::parse($history->created_at)->isoFormat('Do, MMMM YYYY')}}
