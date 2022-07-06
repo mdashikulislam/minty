@@ -34,4 +34,5 @@ Route::middleware(['auth:sanctum','verified'])->group(function (){
     Route::get('cupboard',[\App\Http\Controllers\Api\ApiController::class,'cupboards']);
     Route::post('cupboard/create',[\App\Http\Controllers\Api\ApiController::class,'cupboardCreate']);
     Route::get('cupboard-history',[\App\Http\Controllers\Api\ApiController::class,'cupboardHistory']);
+    Route::post('cupboard-history/create',[\App\Http\Controllers\Api\ApiController::class,'cupboardHistoryCreate']);
 });

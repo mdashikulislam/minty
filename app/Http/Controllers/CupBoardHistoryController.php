@@ -70,7 +70,9 @@ class CupBoardHistoryController extends Controller
             'user_id'=>['required'],
             'cupboard_id'=>['required'],
             'shop_id'=>['required'],
-            'which_way'=>['required']
+            'which_way'=>['required'],
+            'qnty'=>['required','min:1','numeric'],
+            'cost_each'=>['required','between:0.01,99999.99'],
         ]);
         $history = CupboardHistory::where('id',$id)->first();
         if (empty($history)){
