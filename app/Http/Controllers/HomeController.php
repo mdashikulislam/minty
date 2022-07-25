@@ -3,37 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\Events\Verified;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        $users = User::whereHas('roles',function ($q){
-            $q->where('name',APP_USER);
-        })->orderByDesc('created_at')->get();
 
-        return view('home')
-            ->with([
-                'users'=>$users
-            ]);
+        return view('home');
     }
 
     public function changePassword()
@@ -51,4 +35,13 @@ class HomeController extends Controller
         toast('Password update successful','success');
         return redirect()->route('dashboard');
     }
+
+//    public function verify($id,$hash,Request $request)
+//    {
+//        if (! hash_equals((string) $id,
+//            (string) $request->user()->getKey())) {
+//            return false;
+//        }
+//        return 'ashik';
+//    }
 }

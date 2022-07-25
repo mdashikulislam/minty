@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
     <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     @stack('css')
 </head>
 
@@ -17,15 +18,52 @@
 <div class="wrapper">
     <div class="leftside-menu">
         <a href="{{route('dashboard')}}" class="logo text-center logo-light">
-            <span>
+            <span style="padding-left: 2px!important;">
                 <img src="{{asset('assets/images/logo-170.png')}}">
             </span>
         </a>
         <div class="h-100" id="leftside-menu-container" data-simplebar>
             <ul class="side-nav">
-                <li class="side-nav-item menuitem-active">
-                    <a href="{{route('dashboard')}}" class="side-nav-link active">
+                <li class="side-nav-item ">
+                    <a href="{{route('dashboard')}}" class="side-nav-link ">
+                        <i class="uil-home-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="side-nav-item ">
+                    <a href="{{route('shop.index')}}" class="side-nav-link ">
+                        <i class="uil-store"></i>
+                        <span>Shops</span>
+                    </a>
+                </li>
+                <li class="side-nav-item ">
+                    <a href="{{route('item.index')}}" class="side-nav-link ">
+                        <i class="uil-clipboard-alt"></i>
+                        <span>Master Items</span>
+                    </a>
+                </li>
+                <li class="side-nav-item ">
+                    <a href="{{route('shop.item.index')}}" class="side-nav-link ">
+                        <i class="uil-package"></i>
+                        <span>Shop Items</span>
+                    </a>
+                </li>
+
+                <li class="side-nav-item ">
+                    <a href="{{route('cupboard.index')}}" class="side-nav-link ">
                         <i class="uil-calender"></i>
+                        <span>Cupboards</span>
+                    </a>
+                </li>
+                <li class="side-nav-item ">
+                    <a href="{{route('cupboard.history.index')}}" class="side-nav-link ">
+                        <i class="uil-meeting-board"></i>
+                        <span>Cupboard History</span>
+                    </a>
+                </li>
+                <li class="side-nav-item ">
+                    <a href="{{route('user.index')}}" class="side-nav-link">
+                        <i class="uil-user"></i>
                         <span>Users</span>
                     </a>
                 </li>
@@ -46,8 +84,10 @@
                                              class="rounded-circle">
                                     </span>
                                     <span>
-                                        <span class="account-user-name">{{\Illuminate\Support\Facades\Auth::user()->name}}</span>
-                                        <span class="account-position">{{getRoleName(\Illuminate\Support\Facades\Auth::user())}}</span>
+                                        <span
+                                            class="account-user-name">{{\Illuminate\Support\Facades\Auth::user()->name}}</span>
+                                        <span
+                                            class="account-position">{{getRoleName(\Illuminate\Support\Facades\Auth::user())}}</span>
                                     </span>
                         </a>
                         <div

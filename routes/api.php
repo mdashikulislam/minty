@@ -17,3 +17,22 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+//Auth Route
+Route::post('login',[\App\Http\Controllers\Api\Auth\AuthController::class,'login']);
+Route::post('register',[\App\Http\Controllers\Api\Auth\AuthController::class,'register']);
+Route::post('forget-password',[\App\Http\Controllers\Api\Auth\AuthController::class,'sendResetLinkEmail']);
+Route::post('password-reset',[\App\Http\Controllers\Api\Auth\ResetPasswordController::class,'reset']);
+
+Route::middleware(['auth:sanctum','verified'])->group(function (){
+    Route::post('logout',[\App\Http\Controllers\Api\Auth\AuthController::class,'logout']);
+    Route::get('user-info',[\App\Http\Controllers\Api\Auth\AuthController::class,'userInfo']);
+    Route::post('user-info-update',[\App\Http\Controllers\Api\Auth\AuthController::class,'userInfoUpdate']);
+    Route::post('update-password',[\App\Http\Controllers\Api\Auth\AuthController::class,'updatePassword']);
+    Route::get('rent-items',[\App\Http\Controllers\Api\ApiController::class,'rentItem']);
+    Route::get('rent-item/{id}',[\App\Http\Controllers\Api\ApiController::class,'rentItemSingle']);
+    Route::get('shop-list',[\App\Http\Controllers\Api\ApiController::class,'shopList']);
+    Route::get('cupboard',[\App\Http\Controllers\Api\ApiController::class,'cupboards']);
+    Route::post('cupboard/create',[\App\Http\Controllers\Api\ApiController::class,'cupboardCreate']);
+    Route::get('cupboard-history',[\App\Http\Controllers\Api\ApiController::class,'cupboardHistory']);
+    Route::post('cupboard-history/create',[\App\Http\Controllers\Api\ApiController::class,'cupboardHistoryCreate']);
+});
