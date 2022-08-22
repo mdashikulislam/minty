@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('header-text')
     Shop Items
 @endsection
@@ -30,10 +29,10 @@
                                 <tr>
                                     <td>{{$loop->index +1 }}</td>
                                     <td>
-                                        {{$item->shops->name}}
+                                        {{@$item->shops->name}}
                                     </td>
                                     <td>
-                                        {{$item->masterItems->name}}
+                                        {{@$item->masterItems->name}}
                                     </td>
                                     <td>
                                         {{$item->display_shop ==1 ? 'Yes':'No'}}

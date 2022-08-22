@@ -52,7 +52,12 @@ class ApiController extends Controller
 
     public function cupboards()
     {
-        $cupboard = Cupboard::with('masterItems')->whereHas('masterItems')->where('user_id',\Auth::id())->orderByDesc('created_at')->get();
+        $cupboard = Cupboard::selectRaw('user_id,master_item_id,SUM(purchase_total) as purchase_total,SUM(in_use_count) as in_use_count,created_at,updated_at')
+            ->whereHas('masterItems')
+            ->where('user_id',\Auth::id())
+            ->orderByDesc('created_at')
+            ->groupBy('master_item_id')
+            ->get();
          return \response([
              'status'=>true,
              'data'=>$cupboard

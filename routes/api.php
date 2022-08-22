@@ -31,7 +31,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function (){
     Route::get('rent-items',[\App\Http\Controllers\Api\ApiController::class,'rentItem']);
     Route::get('rent-item/{id}',[\App\Http\Controllers\Api\ApiController::class,'rentItemSingle']);
     Route::get('shop-list',[\App\Http\Controllers\Api\ApiController::class,'shopList']);
-    Route::get('cupboard',[\App\Http\Controllers\Api\ApiController::class,'cupboards']);
+    Route::get('my-cupboard',[\App\Http\Controllers\Api\ApiController::class,'cupboards']);
     Route::post('cupboard/create',[\App\Http\Controllers\Api\ApiController::class,'cupboardCreate']);
     Route::get('cupboard-history',[\App\Http\Controllers\Api\ApiController::class,'cupboardHistory']);
     Route::post('cupboard-history/create',[\App\Http\Controllers\Api\ApiController::class,'cupboardHistoryCreate']);

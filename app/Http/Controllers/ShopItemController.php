@@ -53,6 +53,30 @@ class ShopItemController extends Controller
                 'shopItem'=>$shopItem
             ]);
     }
+
+    public function update($id, Request $request)
+    {
+        $shopItem = ShopItem::where('id',$id)->first();
+        if (empty($shopItem)){
+            toast('Shop Item not found','error');
+            return redirect()->back();
+        }
+        $this->extracted($shopItem,$request);
+        $shopItem->save();
+        toast('Shop update successfully','success');
+        return redirect()->route('shop.item.index');
+    }
+    public function delete($id)
+    {
+        $shopItem = ShopItem::where('id',$id)->first();
+        if (empty($shopItem)){
+            toast('Shop Item not found','error');
+            return redirect()->back();
+        }
+        $shopItem->delete();
+        toast('Shop delete successfully','success');
+        return redirect()->route('shop.item.index');
+    }
     public function extracted(ShopItem $item, Request $request)
     {
         $item->shop_id = $request->shop_id;
